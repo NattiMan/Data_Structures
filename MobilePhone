@@ -1,0 +1,38 @@
+
+import java.util.Scanner;
+
+//store, modify, remove and query contact names and numbers
+public class MobilePhone {
+    public static void Mobilephone() {
+        Scanner continuity = new Scanner(System.in);
+        System.out.println("Choose 1 to stay and 2 to end.");
+        int Continuity = continuity.nextInt();
+        boolean sit = false;
+        if (Continuity == 1) {
+            sit = true;
+        } else {
+            sit=false;
+        }
+        while (sit) {
+            Scanner choice = new Scanner(System.in);
+            System.out.println("Choose Options \n 1. Add new Contact. \n 2. search contact. \n 3. modify contact \n 4. leave.");
+            int Choice = choice.nextInt();
+            switch (Choice) {
+                case 1:
+                    Contacts.AddContact();
+                    break;
+                case 2:
+                    Scanner NameOfNewContact = new Scanner(System.in);
+                    System.out.println("Search Name:- ");
+                    String nameofNewContact = NameOfNewContact.next();
+                    Contacts.SearchContact(nameofNewContact);
+                    break;
+                case 3:
+                    Contacts.ModifyContact();
+                    break;
+
+            }
+
+        }
+    }
+}
