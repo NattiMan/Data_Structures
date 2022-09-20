@@ -1,0 +1,54 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// user enters the contacts and their numbers
+public class Contacts {
+    //private
+    private static ArrayList<String> ContactNames=new ArrayList<>();
+    private static ArrayList<String> ContactNumbers=new ArrayList<>();
+
+    public static void AddContact() {
+        Scanner entry=new Scanner(System.in);
+        System.out.println("Name:- ");
+        String Name="Name not entered! ";
+        Name=entry.next();
+        System.out.println("Phone number:- ");
+        String Number="Number not entered! ";
+        Number=entry.next();
+        ContactNames.add(Name);
+        ContactNumbers.add(Number);
+    }
+    public static void SearchContact(String name) {
+        if(ContactNames.contains(name)){
+            int i=ContactNames.indexOf(name);
+            System.out.println(name+ "\n"+ContactNumbers.get(i));
+        }
+    }
+
+    public static void ModifyContact() {
+        //first it checks in case the contact is already registered
+        Scanner entry=new Scanner(System.in);
+        System.out.println("Name:- ");
+        String Name="Name not entered! ";
+        Name=entry.next();
+        if (ContactNames.contains(Name)) {
+            Scanner newNUmber=new Scanner(System.in);
+            System.out.println("New Number:- ");
+            String NewNumber="Number not entered! ";
+            NewNumber=entry.next();
+            int k=ContactNames.indexOf(Name);
+            ContactNumbers.set(k,NewNumber);
+        }else {
+            Scanner backtoadd=new Scanner(System.in);
+            System.out.println("The name you entered is not registered please add it as a new contact. \n To add it as a new" +
+                    "contact please click 1 ");
+            int j=backtoadd.nextInt();
+            if (j == 1) {
+                AddContact();
+            }
+        }
+
+    }
+
+
+}
